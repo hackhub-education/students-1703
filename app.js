@@ -8,6 +8,7 @@ var path = require('path')
 var mongoose = require('mongoose')
 
 app.set('view engine', 'pug')
+app.use(express.static(path.join(__dirname, 'public')));
 
 mongoose.connect('mongodb://localhost/webdxd')
 

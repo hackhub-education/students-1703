@@ -1,7 +1,16 @@
 html
     head
-        title="Student Management"
+        title Student Management
+        link(rel='stylesheet', href='/css/main.css')
     body
-        h1="Student List"
-        each student in studentList
-            p=student.name
+        h1 Student List
+        table
+            tr
+                th Name
+                th Age
+                th School
+            each student in studentList
+                tr
+                    td=student.name
+                    td=student.age
+                    td=student.school
