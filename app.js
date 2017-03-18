@@ -31,6 +31,20 @@ app.get('/', function (req, res) {
 
 })
 
+app.get('/new', function (req,res) {
+    res.send('Create New')
+})
+
+app.get('/:id', function (req, res) {
+    Student.findById(req.params.id, function(err, doc) {
+        if (err) {
+            res.send("Network Error")
+        } else {
+            res.render(path.join(__dirname, './views', 'detail.pug'), {student: doc})
+        }
+    })
+})
+
 app.listen(3000, function () {
     console.log('Example app listening on port 3000!')
 })

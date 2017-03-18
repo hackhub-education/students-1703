@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    h2 Student Detail
+    table
+        tr
+            th Name
+            th Age
+            th School
+        tr
+            td=student.name
+            td=student.age
+            td=student.school
+
+
+    a(href="/") Back

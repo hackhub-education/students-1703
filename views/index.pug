@@ -1,16 +1,11 @@
-html
-    head
-        title Student Management
-        link(rel='stylesheet', href='/css/main.css')
-    body
-        h1 Student List
-        table
+extends layout
+
+block content
+    h2 Student List
+    table
+        tr
+            th Name
+        each student in studentList
             tr
-                th Name
-                th Age
-                th School
-            each student in studentList
-                tr
-                    td=student.name
-                    td=student.age
-                    td=student.school
+                td
+                    a(href=student._id)=student.name
