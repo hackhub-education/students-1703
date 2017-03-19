@@ -46,6 +46,12 @@ app.post('/new', function(req, res) {
     res.send("Success")
 })
 
+app.post('/delete', function(req, res) {
+    Student.remove({_id: req.body.id}).exec(function(err, doc) {
+        res.redirect('/')
+    })
+})
+
 app.get('/update/:id', function(req, res) {
     Student.findById(req.params.id, function(err, doc) {
         if (err) {
@@ -57,12 +63,16 @@ app.get('/update/:id', function(req, res) {
 })
 
 app.post('/update/:id', function(req, res) {
-    Student.update({_id: req.params.id}, {$set: req.body}, function(err, doc) {
+    Student.update({_id: req.params.id}, {$set: req.body}).exec(function(err, msg) {
+
+
         if (err) {
             res.send("Update Failed")
         } else {
+            console.log(msg)
             res.redirect('/' + req.params.id)
         }
+
     })
 })
 

@@ -13,7 +13,9 @@ block content
             td=student.age
             td=student.school
             td
-                a(href="/delete/" + student._id) Delete
+                form(method="POST" action="/delete")
+                    input(type="hidden" value=student._id, name="id")
+                    input(type="submit" value="Delete")
 
     a(href="/") Home
     a(href="/update/" + student._id) Update
