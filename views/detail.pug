@@ -7,11 +7,13 @@ block content
             th Name
             th Age
             th School
+            th Delete
         tr
             td=student.name
             td=student.age
             td=student.school
+            td
+                a(href="/delete/" + student._id) Delete
 
-
-    a(href="/") Back
+    a(href="/") Home
     a(href="/update/" + student._id) Update
