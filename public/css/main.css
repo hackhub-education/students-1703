@@ -19,3 +19,10 @@ table, td, th {
     border: 1px solid #ccc;
 
 }
+
+a {
+    text-decoration: none;
+    color: cadetblue;
+    margin-left: 5px;
+    margin-top: 10px;
+}

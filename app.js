@@ -15,6 +15,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 mongoose.connect('mongodb://localhost/webdxd')
 
+var ObjectId = mongoose.Schema.ObjectId;
+
 var StudentSchema = {
     name: String,
     age: Number,
@@ -42,6 +44,26 @@ app.post('/new', function(req, res) {
     var studentObject = new Student(req.body)
     studentObject.save()
     res.send("Success")
+})
+
+app.get('/update/:id', function(req, res) {
+    Student.findById(req.params.id, function(err, doc) {
+        if (err) {
+            res.send("Network Error")
+        } else {
+            res.render(path.join(__dirname, './views', 'update.pug'), {student: doc, actionUrl: "/update/" + doc._id})
+        }
+    })
+})
+
+app.post('/update/:id', function(req, res) {
+    Student.update({_id: req.params.id}, {$set: req.body}, function(err, doc) {
+        if (err) {
+            res.send("Update Failed")
+        } else {
+            res.redirect('/' + req.params.id)
+        }
+    })
 })
 
 app.get('/:id', function (req, res) {

@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    h2 Update Student Detail
+    form(method="POST", action=actionUrl)
+        input(placeholder="Name" name="name" value=student.name)
+        br
+        input(placeholder="Age" name="age" value=student.age)
+        br
+        input(placeholder="School" name="school" value=student.school)
+        br
+        input(type="submit", value="Submit")
+    a(href="/") Back
